@@ -3,7 +3,7 @@
 Plugin Name: Dicm.dk - Change username
 Plugin URI: http://dicm.dk
 Description: Allows site admin's to change username of any user wihtout using any other tools. Plugin requires Dicm.dk - Toolbox to work
-Version: 1.0
+Version: 1.1
 Author: Kim Vinberg - dicm.dk
 Author URI: http://dicm.dk
 License: 
@@ -57,7 +57,7 @@ add_menu_page( 'Dicm.dk - Toolbox', 'Dicm.dk - Toolbox', 'manage_options', 'dicm
 
 function dicmdktoolbox_change_username_settings_init(  ) { 
 
-  if ( $_GET['settings-updated'] == 'true' && is_admin()) {
+  if ( @$_GET['settings-updated'] == 'true' && is_admin()) {
    	
 	$options = get_option( 'dicmdktoolbox_settings' );
 
