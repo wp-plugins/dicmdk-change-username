@@ -3,27 +3,12 @@
 Plugin Name: Dicm.dk - Change username
 Plugin URI: http://dicm.dk
 Description: Allows site admin's to change username of any user wihtout using any other tools. Plugin requires Dicm.dk - Toolbox to work
-Version: 1.1
+Version: 1.2
 Author: Kim Vinberg - dicm.dk
 Author URI: http://dicm.dk
 License: 
-
 Free for personal use
-
 */
-/*
-register_activation_hook( __FILE__, 'child_plugin_activate' );
-function child_plugin_activate(){
-
-    // Require parent plugin
-    if ( ! is_plugin_active( 'dicmdk-toolbox/dicmdk-toolbox.php' ) and current_user_can( 'activate_plugins' ) ) {
-        // Stop activation redirect and show error
-        wp_die('Sorry, but this plugin requires the Parent Plugin dicmdk-toolbox to be installed and active. <br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');
-    }
-}
-
-*/
-
 
 add_action('admin_menu', 'my_plugin_menu');
 add_action( 'admin_init', 'dicmdktoolbox_change_username_settings_init' );
@@ -78,7 +63,7 @@ function dicmdktoolbox_change_username_settings_init(  ) {
 		
 	register_setting( 'pluginPage', 'dicmdktoolbox_settings' );	
 
-add_settings_section(
+	add_settings_section(
 		'dicmdktoolbox_change_username_pluginPage_section', 
 		__( 'Change username', 'dicmdktoolbox' ), 
 		'dicmdktoolbox_change_username_settings_section_callback', 
@@ -132,7 +117,6 @@ function dicmdktoolbox_change_username_text_field_1_render(  ) {
 
 function dicmdktoolbox_change_username_text_field_submit_render(  ) { 
 
-	//$options = get_option( 'dicmdktoolbox_change_username__settings' );
 	submit_button();
 
 }
@@ -141,7 +125,7 @@ function dicmdktoolbox_change_username_text_field_submit_render(  ) {
 
 function dicmdktoolbox_change_username_settings_section_callback(  ) { 
 
-	echo __('Allows site administrators to change a username easily in 3 steps.<br>
+	echo __('Allows site administrators to change a username in 3 steps.<br>
 		1: Enter Old username (example: admin)<br>
 		2: Enter new username (Example: administrator)<br>
 		3: Press "Save Changes".<br>
